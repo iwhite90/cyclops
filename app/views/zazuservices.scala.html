@@ -1,12 +1,18 @@
-@(message: String)
+@(services: Seq[model.ServiceDescription])
 
 @main("Cyclops") {
 
 <div class="container">
 
  <div class="starter-template">
-  <h1>Mongoose notification sender</h1>
-  <p class="lead">Search for services in Zazu and Nala.<br/>Use this tool to send manual notifications to Zazu, Nala and CBS.</p>
+  <h1>Zazu services</h1>
+ </div>
+ <div>
+  <ul>
+      @for(service <- services) {
+        <li>@{service.id} - @{service.msisdn} - @{service.state}</li>
+      }
+  </ul>
  </div>
 
 </div><!-- /.container -->

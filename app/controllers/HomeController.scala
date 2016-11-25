@@ -24,4 +24,8 @@ class HomeController @Inject()(zazu: Zazu) extends Controller {
     Ok(views.html.index("Your new application is ready."))
   }
 
+  def zazuServices = Action {
+    Ok(views.html.zazuservices(zazu allServices))
+  }
+
 }
