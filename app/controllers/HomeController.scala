@@ -28,4 +28,10 @@ class HomeController @Inject()(zazu: Zazu) extends Controller {
     Ok(views.html.zazuservices(zazu allServices))
   }
 
+  def updateZazuService(id: String) = Action { implicit request =>
+    val newState = request.getQueryString("new-state").get
+    val updatedService = zazu.updateService(id, newState)
+    Ok(views.html.zazuservice(updatedService))
+  }
+
 }

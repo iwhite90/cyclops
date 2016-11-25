@@ -28,4 +28,12 @@ class Zazu @Inject() (ws: WSClient)(implicit executionContext: ExecutionContext)
     val json = Await.result(x, 2 seconds).json
     (json \ "services").as[Seq[ServiceDescription]]
   }
+
+  def updateService(id: String, newState: String) = {
+    val x: Future[WSResponse] = ws.url("http://localhost:8000/zazuservice.json")
+      .withHeaders("Accept" -> "application/json")
+      .get()
+
+    Await.result(x, 2 seconds).json.as[ServiceDescription]
+  }
 }
